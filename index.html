@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Law Assistant</title>
+        <link href="bulma.min.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <nav class="navbar is-dark">
+            <div class="navbar-content">
+                <h1 class="is-size-1 navbar-item has-text-white-bis" style="margin-left: 50px;">
+                    How to Law
+                </h1>
+            </div>
+        </nav>
+        <section class="section has-text-centered">
+            <h3 class="is-size-3">
+                Was the law broken?
+            </h3>
+            <section class="section buttons is-centered">
+                <button id="yes-button" class="button is-primary">
+                    Yes
+                </button>
+                <button id="no-button" class="button is-primary">
+                    No
+                </button>
+            </section>
+            <section class="section">
+                <h2 class="is-size-2" id="response">
+
+                </h2>
+            </section>
+        </section>
+        <script>
+            let yes_button = document.getElementById("yes-button");
+            let no_button = document.getElementById("no-button");
+            let response = document.getElementById("response");
+
+            let yes_responses = [
+                "You should probably call a lawyer, I think",
+                "I hear leaving the country is a good option"
+            ];
+
+            let no_responses = [
+                "Ok, I'm pretty sure you don't need to do anything then",
+                ""
+            ];
+
+            yes_button.onclick = () => {
+                response.innerText = yes_responses[Math.floor(Math.random() * yes_responses.length)];
+            };
+
+            no_button.onclick = () => {
+                response.innerText = no_responses[Math.floor(Math.random() * no_responses.length)];
+            };
+        </script>
+    </body>
+</html>
