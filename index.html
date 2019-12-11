@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Law Made Easy">
+        <meta name="keywords" content="Law">
+        <meta name="author" content="Daniel Brakke">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Law Assistant</title>
         <link href="bulma.min.css" rel="stylesheet" type="text/css" />
     </head>
@@ -13,10 +18,10 @@
             </div>
         </nav>
         <section class="section has-text-centered">
-            <h3 class="is-size-3">
+            <h3 class="is-size-3" id="prompt">
                 Was the law broken?
             </h3>
-            <section class="section buttons is-centered">
+            <section class="section buttons is-centered" style="max-width: 95%; margin: auto;">
                 <button id="yes-button" class="button is-primary">
                     Yes
                 </button>
@@ -31,26 +36,69 @@
             </section>
         </section>
         <script>
+            let prompt = document.getElementById("prompt");
             let yes_button = document.getElementById("yes-button");
             let no_button = document.getElementById("no-button");
             let response = document.getElementById("response");
 
             let yes_responses = [
                 "You should probably call a lawyer, I think",
-                "I hear leaving the country is a good option"
+                "I hear leaving the country is a good option",
+                "You probably shouldn't tell anyone",
+                "I doubt anyone noticed",
+                "Shhhh.... I didn't hear that",
+                "Oh. That's messed up, dude",
+                "Ok, but, like, was it really that bad?",
+                "What if you just didn't tell anyone?",
+                "<img src='https://images.emojiterra.com/google/android-pie/512px/1f625.png' width='200px' height='200px' />",
+                "Sorry, who is this? don't think we've ever met before...",
+                "I mean, I feel like that was probably a bad move",
+                "No, it wasn't..<br/><img src='https://images.emojiterra.com/google/android-pie/512px/1f609.png' width='200px' height='200px' />",
+                "Any chance you know of a small cabin to hide out in for a few years?",
+                "You do know breaking the law is against the law, right?"
             ];
 
             let no_responses = [
                 "Ok, I'm pretty sure you don't need to do anything then",
-                ""
+                "Whew.. Ok good, that would have been awkward",
+                "Oh. I totally didn't assume you did!",
+                "Cool! We're done here.",
+                "Good, I don't associate with hoodlums",
+                "Ok, that's a relief",
+                "<img src='https://images.emojiterra.com/google/android-pie/512px/1f389.png' width='200px' height='200px'>",
+                "WOOHOO! CONGRATS!",
+                "You had me worried for a second there",
+                "Of course not! Who would do that??",
+                "Yay! Happy dance!",
+                "You've made me proud",
+                "Thank you, you just saved me days of research"
             ];
 
             yes_button.onclick = () => {
-                response.innerText = yes_responses[Math.floor(Math.random() * yes_responses.length)];
+                response.innerHTML = yes_responses[Math.floor(Math.random() * yes_responses.length)];
+                yes_button.style.display = "none";
+                no_button.style.display = "none";
+                prompt.style.display = "none";
+                setTimeout(() => {
+                    reset();
+                }, 3000);
             };
 
             no_button.onclick = () => {
-                response.innerText = no_responses[Math.floor(Math.random() * no_responses.length)];
+                response.innerHTML = no_responses[Math.floor(Math.random() * no_responses.length)];
+                yes_button.style.display = "none";
+                no_button.style.display = "none";
+                prompt.style.display = "none";
+                setTimeout(() => {
+                    reset();
+                }, 3000);
+            };
+
+            let reset = () => {
+                yes_button.style.display = "block";
+                no_button.style.display = "block";
+                prompt.style.display = "block";
+                response.innerHTML = "";
             };
         </script>
     </body>
